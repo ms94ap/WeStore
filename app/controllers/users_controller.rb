@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
  before_action :set_user, only: [:show, :update]
- before_action :validate_user, only: [:edit, :destroy]
+ before_action :validate_user, only: [:edit]
 
 
   def show
@@ -9,6 +9,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+  end
+
+  def edit
+    @posts = Post.all
   end
 
   def create
@@ -30,8 +34,6 @@ class UsersController < ApplicationController
   end
 
 
-  def edit
-  end
 
   private
 
