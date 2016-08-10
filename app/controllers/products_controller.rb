@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
  private
 
  def show_errors
-   flash[:error] = "Please select add a product."
+   flash[:error] = "Please add a product."
    redirect_to products_path
  end
 
