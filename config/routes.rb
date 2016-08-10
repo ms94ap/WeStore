@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :users, :only => [:new]
+  resources :users
 
   root to: "welcome#index"
 

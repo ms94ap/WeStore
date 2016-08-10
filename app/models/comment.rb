@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
   belongs_to :user
-  belongs_to :prodoct
-  
+  belongs_to :product
+
 end

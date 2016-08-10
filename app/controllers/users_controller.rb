@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
  before_action :set_user, only: [:show, :update]
  before_action :validate_user, only: [:edit]
+ before_action :check_admin, only: [:delete]
 
 
   def show
@@ -12,13 +13,13 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @posts = Post.all
+    @user = User.all
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to welcome_path
+      redirect_to new_user_path
     else
       render :new
     end
@@ -36,6 +37,10 @@ class UsersController < ApplicationController
 
 
   private
+
+  def check_admin
+    @user.admin?
+  end
 
   def user_params
     params.require(:user).permit(:email, :password, :name, :country)
