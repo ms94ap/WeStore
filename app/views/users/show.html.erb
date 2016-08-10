@@ -1,13 +1,14 @@
 <h1>Your Profile</h1>
-<% if current_user %>
-    <h4>Name: <%= current_user.name  %><h4>
-    <p>Email: <%= current_user.email %></p>
+    <h4>Name: <%= @user.name  %><h4>
+    <p>Email: <%= @user.email %></p>
+    <p>Country: <%= @user.country %></p>
     <br>
 <h3>Your listings:</h3>
-    <%= @posts.each do |post| %>
+    <% @user.posts.each do |post| %>
       <%= link_to post.name, user_posts_path(@user)%>
    <%end %>
-<%end%>
 
 
-<h4>To edit your account please click <%= link_to "here", edit_user_path %></h4>  <!-- add paths for both edit and delete-->
+
+<h4>To edit your account please click <%= link_to "here", edit_user_path %></h4>
+<h4>To log out please click <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></h4>

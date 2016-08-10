@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
  before_action :set_user, only: [:show, :update]
- before_action :validate_user, only: [:edit]
  before_action :check_admin, only: [:delete]
 
 
@@ -9,7 +8,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    if current_user != User.find(params[:id]) # when signout
+      redirect_to root_path
+    else
+      @user = current_user
+    end
   end
 
   def index
@@ -17,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.all
+    @user = User.find(params[:id])
   end
 
   def create
