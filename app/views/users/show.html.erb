@@ -4,8 +4,10 @@
     <p>Email: <%= current_user.email %></p>
     <br>
 <h3>Your products listing:</h3>
-<% = @posts.each do |post| %>
-<%= link_to post.name, #add the path here%>
+    <% = @posts.each do |post| %>
+      <%= link_to post.name, #add the path here%>
+  < <%=end %>
+<%=end%>
 
 
 <h4>To edit the please click here here</h4>  <!-- add paths for both edit and delete-->
