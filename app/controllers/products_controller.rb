@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: :show_errors
+  
 
  def show
    @product = Product.find(params[:id])

@@ -4,10 +4,10 @@
     <p>Email: <%= current_user.email %></p>
     <br>
 <h3>Your listings:</h3>
-    <% = @posts.each do |post| %>
-      <%= link_to post.name, user_posts_path%>
-  < <%=end %>
-<%=end%>
+    <%= @posts.each do |post| %>
+      <%= link_to post.name, user_posts_path(@user)%>
+   <%end %>
+<%end%>
 
 
-<h4>To edit your account please click <%= link_to "here" edit_user_path %></h4>  <!-- add paths for both edit and delete-->
+<h4>To edit your account please click <%= link_to "here", edit_user_path %></h4>  <!-- add paths for both edit and delete-->

@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-         has_many :posts
-         has_many :products, through: :posts
+   has_many :posts
+   has_many :products, through: :posts
 
-  enum :role => [:admin, :buyer, :supplier]
+  enum :role => [:admin, :buyer, :producer]
 
 end
