@@ -1,0 +1,14 @@
+<%= form_for @product do |f|%>
+<p>
+  <%= f.label :name %>:
+  <%= f.text_field :name %>
+
+  <%= f.label :minimum_quantity %>
+  <%= f.text_field :minimum_quantity %>
+
+  <%= f.label :price %>
+  <%= text_field_tag :thing, type: "price" %>
+</p>
+
+  <%= f.submit %>
+<% end %>
