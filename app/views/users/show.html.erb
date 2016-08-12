@@ -5,10 +5,10 @@
     <br>
 <h3>Your listings:</h3>
     <% @user.posts.each do |post| %>
-      <%= link_to post.name, user_posts_path(@user)%>
+      <%= link_to post.title, user_posts_path(@user)%>
    <%end %>
 
 
-
-<h4>To edit your account please click <%= link_to "here", edit_user_path %></h4>
+<h3>To create a new post for your product please click <%= link_to "here", new_user_post_path(@user)%></h3>
+<h4>To edit your account please click <%= link_to "here", edit_user_path(@user) %></h4>
 <h4>To log out please click <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></h4>
