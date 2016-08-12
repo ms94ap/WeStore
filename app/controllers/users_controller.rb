@@ -8,11 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_user != User.find(params[:id]) # when signout
-      redirect_to root_path
-    else
-      @user = current_user
-    end
+    @user = User.find(params[:id]) 
   end
 
   def index
