@@ -1,30 +1,57 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.all #(no index.html.erb)
   end
 
-  def edit
-
+  def show
+    @post = @post = Post.find(params[:id])
   end
 
   def new
-    @post = Post.new
+    if params[:user_id] && !User.exists?(params[:user_id])
+      redirect_to new_user_path, alert: "user not found."
+    else
+      @post = Post.new(user_id: params[:user_id])
+    end
   end
+
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-    redirect_to post_path(@post)
-  end
-  def show
+    redirect_to user_post_path(@post), notice: 'Successfully updated.'
   end
 
+  def edit
+    if params[:user_id]
+      user = User.find_by(id: params[:user_id])
+      if user.nil?
+        redirect_to users_path, alert: "Account not Found"
+      else
+        @post = user.posts.find_by(id: params[:id])
+        redirect_to user_post_path(user) if @post.nil?
+      end
+    else
+      @post = Post.find(params[:id])
+    end
+  end
+
+  def create
+    @post = Post.new(post_params)
+    @post.save
+    redirect_to user_post_path(@post.user, @post)#add user to redirect to the path
+  end
+
+
   def destroy
+   @post = @user.posts.find(params[:id])
+   @post.destroy
+   redirect_to user_path(current_user)
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:content, :user_id)
+    params.require(:post).permit(:title, :user_id)
   end
 
 end

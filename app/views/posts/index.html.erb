@@ -1,0 +1,7 @@
+<h2>Create new Post</h2>
+
+<% @posts.each do |post| %>
+<%= link_to post.title, user_posts_path(post)%>
+<% end %>
+
+<%= link_to "Add a a new post", new_user_post%>
