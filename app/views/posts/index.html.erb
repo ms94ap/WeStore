@@ -2,6 +2,8 @@
 
 <% @posts.each do |post| %>
 <%= link_to post.title, user_posts_path(post)%>
-<% end %>
 
-<%= link_to "Add a a new post", new_user_post%>
+
+<%= link_to "Add a a new post", new_user_post_path%>
+<%= button_to 'Delete Post', {controller: :posts, action: "delete", id: post.id} :method => :delete, :confirm => "Are you sure?" %>
+<% end %>
