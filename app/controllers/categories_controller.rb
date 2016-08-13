@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
 
 
- def show
+ def index
    @category = Category.find(params[:id])
  end
 
@@ -24,12 +24,3 @@ class CategoriesController < ApplicationController
       render :edit
     end
   end
-
-
-
- def destroy
-   @category = Category.find[params(:id)]
-   @category.destroy
-   redirect_to admin_category_path(@category)
- end
-end
