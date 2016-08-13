@@ -2,13 +2,12 @@ class UsersController < ApplicationController
  before_action :set_user, only: [:show, :update]
  before_action :check_admin, only: [:delete]
 
-
   def new
     @user = User.new
   end
 
   def show
-    @user = User.find(params[:id]) 
+    @user = User.find(params[:id])
   end
 
   def index
