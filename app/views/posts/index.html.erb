@@ -1,9 +1,11 @@
 <h2>Create new Post</h2>
+<div>
+  <% @posts.each do |post| %>
+  <%= link_to post.title, user_posts_path(post)%>
 
-<% @posts.each do |post| %>
-<%= link_to post.title, user_posts_path(post)%>
+</div>
 
 
 <%= link_to "Add a a new post", new_user_post_path%>
-<%= button_to 'Delete Post', {controller: :posts, action: "delete", id: post.id} :method => :delete, :confirm => "Are you sure?" %>
+<%= button_to 'Delete Post', {controller: :posts, action: "destroy", id: post.id}, :method => :delete, :confirm => "Are you sure?" %>
 <% end %>
