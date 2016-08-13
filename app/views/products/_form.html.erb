@@ -1,16 +1,16 @@
-<%= form_for @product do |f| %>
-  <%= f.label :name %><br>
-  <%= f.text_field :name %><br><br>
+<%= form_for @product do |f|%>
+<p>
+  <%= f.label :name %>:
+  <%= f.text_field :name %>
 
-  <%= f.label :name %><br>
-  <%= f.text_field :name %><br><br>
+  <%= f.label :minimum_quantity %>
+  <%= f.number_field_tag :minimum_quantity %>
 
-  <%= f.label "Minimum Quantity" %><br>
-  <%= f.number_field_tag :cost %><br><br>
+  <%= f.label :price %>
+  <%= f.number_field_tag :price %>
 
-  <%= f.label :price %><br>
-  <%= f.number_field_tag :price %><br><br>
+  <%= f.collection_select :category, Category.all, :id, :name %>
+</p>
 
   <%= f.submit %>
-
 <% end %>
