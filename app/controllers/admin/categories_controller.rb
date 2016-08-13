@@ -7,8 +7,10 @@ class CategoriesController < ApplicationController
 
  def new
    @category = Category.new
-   redirect_to '/'
  end
+
+ def create
+   @category = Category.create(:name)
 
 
  def destroy
