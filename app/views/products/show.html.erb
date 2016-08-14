@@ -1,4 +1,6 @@
-
-<%=@product.posts.each do |product|%>
-<%= link_to product.name, product_path(product)%>
-<% end %>
+<div>
+  <%=@product.posts.each do |product|%>
+  <%= link_to product.name, product_path(product)%>
+  <% end %>
+</div>
+ <!--Note: check if file is required or to be deleted -->
