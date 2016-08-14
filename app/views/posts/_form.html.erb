@@ -1,8 +1,14 @@
 
 <%= form_for [@post.user, @post] do |f| %>
-<%= f.hidden_field :user_id, value: @post.user_id%>
-<%= f.label :title %>:
-<%= f.text_field :title %>
+  <%= f.hidden_field :user_id, value: @post.user_id%>
+  <%= f.label :title %>:
+  <%= f.text_field :title %>
+
+  <h2>Product for post:</h2>
+  <%= f.fields_for :product_attributes do |product| %>
+    <%= render partial: "products/form", locals: {f: product} %>
+  <% end %>
+
 
   <%= f.submit %>
 <% end %>
