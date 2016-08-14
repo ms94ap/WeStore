@@ -38,8 +38,11 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.save
-    redirect_to user_post_path(@post.user, @post)#add user to redirect to the path
+    if @post.save
+      redirect_to user_post_path(@post.user, @post)#add user to redirect to the path
+    else
+      render 'posts/new'
+    end
   end
 
 
@@ -52,7 +55,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :user_id, product_attributes: [:name, :minimum_quantity, :price])
+    params.require(:post).permit(:title, :description, :user_id, product_attributes: [:name, :minimum_quantity, :price])
   end
 
 end
