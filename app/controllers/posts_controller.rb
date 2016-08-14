@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   def index
     @posts = Post.all #(no index.html.erb)
   end
@@ -42,7 +43,7 @@ class PostsController < ApplicationController
   end
 
 
-  def delete
+  def destroy
    @post = Post.find(params[:id])
    @post.destroy
    redirect_to user_path(current_user)
@@ -51,7 +52,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :user_id)
+    params.require(:post).permit(:title, :user_id, product_attributes: [:name, :minimum_quantity, :price])
   end
 
 end
