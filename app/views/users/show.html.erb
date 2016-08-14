@@ -9,6 +9,5 @@
    <%end %>
 
 
-<h3>To create a new post for your product please click <%= link_to "here", new_user_post_path(@user)%></h3>
-<h4>To edit your account please click <%= link_to "here", edit_user_path(@user) %></h4>
-<h4>To log out please click <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></h4>
+<h3><%= link_to "New Post", new_user_post_path(@user)%></h3>
+<h4><%= link_to "Edit account", edit_user_path(@user) %></h4>
