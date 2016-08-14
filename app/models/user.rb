@@ -7,6 +7,6 @@ class User < ApplicationRecord
    has_many :posts
    has_many :products, through: :posts
 
-  enum :role => [:admin, :buyer, :producer]
+  enum :role => [:user, :admin]
 
 end
