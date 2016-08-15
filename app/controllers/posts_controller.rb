@@ -41,7 +41,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to user_post_path(@post.user, @post)#add user to redirect to the path
     else
-      render 'posts/new'
+      render 'posts/new', alert: " Please fill in all of them dude"
     end
   end
 

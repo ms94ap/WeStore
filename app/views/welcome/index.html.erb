@@ -1,6 +1,6 @@
 <header>
   <div>
-    <% if current_user.admin %>
+    <% if current_user && current_user.admin %>
     <%= link_to "categories", admin_categories_path %>
     <% end %>
     <h1>WeStore</h1>
