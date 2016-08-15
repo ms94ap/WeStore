@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 20160813180714) do
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
-    t.integer  "minimum_quantity"
-    t.float    "price"
+    t.string   "minimum_quantity"
+    t.string   "price"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
