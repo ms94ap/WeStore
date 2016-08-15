@@ -1,3 +1,11 @@
+<ul>
+	
+<% @categories.each do |c| %>
+ <li>
+	
+	<%=c.name %> <%=link_to "Delete", admin_category_path(c), :method => :delete, data: {:confirm => "Are you sure?"} %>
+ </li> 
+<% end %>
+</ul>
 
-
-<%= link_to "create new category", new_admin_category(@category) %>
+<%= link_to "create new category", new_admin_category_path%>

@@ -1,0 +1,11 @@
+
+  Name: <%= @category.name%>
+
+  <ul>
+  	<% @category.products.each do |p| %>
+  	<li><%= p.name %></li>
+  	<% end %>
+
+  </ul>
+
+  <%= link_to "Back to categories", admin_categories_path%>
