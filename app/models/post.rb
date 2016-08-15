@@ -1,12 +1,12 @@
 class Post < ApplicationRecord
   belongs_to :user
-  belongs_to :product
-  validates :name, presence: true
+  has_one :product
+  validates :title, presence: true
 
-  # accepts_nested_attributes_for :product
+   accepts_nested_attributes_for :product
 
-  def product_attributes=(pro_attributes)
-
-    Product.create(name: pro_attributes["name"], minimum_quantity: pro_attributes["minimum_quantity"].to_i, price: pro_attributes["price"].to_f)
-  end
+  # def product_attributes=(pro_attributes)
+  #
+  #   Product.create(name: pro_attributes["name"], minimum_quantity: pro_attributes["minimum_quantity"], price: pro_attributes["price"])
+  # end
 end

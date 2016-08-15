@@ -1,7 +1,7 @@
 <h2>Your Posts</h2>
 <div>
   <% @posts.each do |post| %>
-  <%= link_to post.title, user_posts_path(post)%>
+  <%= link_to post.title, user_post_path(post.user, post)%>
 
 </div>
 <%= link_to 'Delete Post', {controller: :posts, action: "destroy", id: post.id}, :method => :delete, :confirm => "Are you sure?" %>
