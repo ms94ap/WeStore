@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
 
  def index
-    @posts = Post.all
+    @posts = Post.most_recent
  end
 
 end

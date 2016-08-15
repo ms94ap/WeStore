@@ -10,7 +10,8 @@
 
     <ul>
       <!-- add all the products or postings? check back later and add the link for each product if product.-->
-      <li><%= @posts.each do |f|%></li>
+      <% @posts.each do |f|%>
+      <li><%=f.title%></li>
       <% end %>
     </ul>
 

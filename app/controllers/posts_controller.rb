@@ -55,7 +55,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :user_id, product_attributes: [:name, :minimum_quantity, :price])
+    params.require(:post).permit(:title, :description, :user_id, product_attributes: [:name, :minimum_quantity, :price, :category])
   end
 
 end
