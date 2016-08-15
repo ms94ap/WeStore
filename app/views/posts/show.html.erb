@@ -1,5 +1,8 @@
 <div>
-  <%= @post.title%>
+
+  Title: <%= @post.title%>
+  Product: <% @product.name %>
+
   <h3>Submitted by: <%=link_to "#{@post.user.name}", user_path(@post.user)%></h3>
-  
+
 </div>

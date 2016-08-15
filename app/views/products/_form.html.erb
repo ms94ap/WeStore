@@ -1,12 +1,15 @@
 <p>
   <%= f.label :name %>:
   <%= f.text_field :name %>
+  <br>
 
   <%= f.label :minimum_quantity %>
   <%= f.text_field :minimum_quantity %>
+  <br>
 
   <%= f.label :price %>
   <%= f.text_field :price %>
+  <br>
 
-  <%= f.collection_select :category, Category.all, :id, :name %>
+  Select category for product: <%= f.collection_select :category, Category.all, :id, :name %>
 </p>

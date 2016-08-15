@@ -4,7 +4,12 @@
   <%= f.label :title %>:
   <%= f.text_field :title %>
 
-  <h2>Product for post:</h2>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+
+
+  <h2>Product details:</h2>
   <%= f.fields_for :product_attributes do |product| %>
     <%= render partial: "products/form", locals: {f: product} %>
   <% end %>
