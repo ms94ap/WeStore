@@ -1,5 +1,8 @@
 <header>
   <div>
+    <% if current_user.admin %>
+    <%= link_to "categories", admin_categories_path %>
+    <% end %>
     <h1>WeStore</h1>
     <h2>Welcome to the Wholesale E-Store</h2>
 
@@ -9,7 +12,6 @@
       <!-- add all the products or postings? check back later and add the link for each product if product.-->
       <li><%= @posts.each do |f|%></li>
       <% end %>
-
     </ul>
 
   </div>

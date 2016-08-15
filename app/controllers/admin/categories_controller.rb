@@ -1,9 +1,10 @@
 class Admin::CategoriesController < ApplicationController
 layout "admin_layout"
-
+before_action :check_admin
  def index
-   @category = Category.find(params[:id])
+   @categories = Category.all
  end
+
 
  def new
    @category = Category.new
@@ -12,14 +13,14 @@ layout "admin_layout"
  def create
    @category = Category.create(:name)
    if @category.save
-     redirect_to admin_category_path(@category)
+     redirect_to admin_category_path(@category), notice: "#{@category.name} category created"
    end
  end
 
  def edit
    @category = Category.find(params[:id])
     if @category.update(name: params[:name])
-      redirect_to admin_category_path(@category), notice: "Category updated."
+      redirect_to admin_category_path(@category), notice: "#{@category.name} category updated."
     else
       render :edit
     end
@@ -29,6 +30,13 @@ layout "admin_layout"
    @category = Category.find[params(:id)]
    @category.destroy
    redirect_to admin_category_path(@category)
+ end
+
+ private
+ def check_admin
+   if !current_user.admin
+     redirect_to root, alert: "Admin rights required!!!"
+   end
  end
 
 

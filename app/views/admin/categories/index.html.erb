@@ -1,9 +1,3 @@
-<%= form_for @category do |f| %>
 
-<%= f.label :name %> <br>
-<%= f.collection_select :name, ["Fruit", "Vegetable", "Dairy", "Wine", "Beverage", "Coffee & Tea", "Oil", "Meat & Poultry",  "Spices & Herbs", "Fish & Seafood", "Cheese"] %>
- <!--<%= f.hidden_field :user_id, value: current_user.id %> check if it is required.-->
- <% end %>
-<%= button_to "Delete #{@category.name.id}", category, method: :delete,confirm: "Are you sure?" %>
-<%= link_to "Edit #{@category.name}", edit_admin_category(@category) %>
+
 <%= link_to "create new category", new_admin_category(@category) %>
