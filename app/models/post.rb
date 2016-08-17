@@ -18,4 +18,9 @@ class Post < ApplicationRecord
 
     self.product = product #get product errors on post.save
   end
+
+  def last_updated
+    updated_at.strftime("Last updated %A, %b %e, at %l:%M %p")
+  end
+
 end

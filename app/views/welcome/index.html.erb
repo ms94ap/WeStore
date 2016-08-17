@@ -9,9 +9,15 @@
     <h4>Posts</h4>
 
     <ul>
-      <!-- add all the products or postings? check back later and add the link for each product if product.-->
-      <% @posts.each do |f|%>
-      <li><%=f.title%></li>
+      
+      <li><% @posts.each do |f|%>
+      <%= f.user.country%>
+      <%= f.user.name%>
+      <%= f.title %> <%= f.last_updated %>
+          
+        
+          
+      </li>
       <% end %>
     </ul>
 
