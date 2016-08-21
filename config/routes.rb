@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users do
-    resources :posts, only: [:show, :index] 
+    resources :posts 
   end
 
   namespace :admin do
@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :products
 
+  #devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
+  
   root to: "welcome#index"
 
 end

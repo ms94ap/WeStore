@@ -3,7 +3,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
     create_table :products do |t|
       t.string :name
       t.string :minimum_quantity
-      t.string :price #check for various currencies
+      t.string :price 
 
       t.timestamps null: false
     end

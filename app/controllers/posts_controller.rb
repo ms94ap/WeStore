@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   def show
     if params[:user_id]
-      @posts = Post.find(params[:id])
+      @post = Post.find(params[:id])
     else
       @post = Post.find(params[:id])
     end
@@ -49,7 +49,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to user_post_path(@post.user, @post)#add user to redirect to the path
     else
-      render 'posts/new', alert: " Please fill in all of them dude"
+      render 'posts/new', alert: " Please fill in all fields"
     end
   end
 

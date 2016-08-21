@@ -3,6 +3,7 @@
     <% if current_user && current_user.admin %>
     <%= link_to "categories", admin_categories_path %>
     <% end %>
+    <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %><br>
     <h1>WeStore</h1>
     <h2>Welcome to the Wholesale E-Store</h2>
 
@@ -10,14 +11,15 @@
 
     <ul>
       
-      <li><% @posts.each do |f|%>
-      <%= f.user.country%>
-      <%= f.user.name%>
-      <%= f.title %> <%= f.last_updated %>
-          
-        
-          
+      <li><% @posts.each do |f|%><br>
+      <%= link_to f.title %> <%= f.last_updated %><br> <!-- add link to the post -->
+      <%= f.user.country%><br>
+      <%= f.user.name%><br>
+      
+
       </li>
+      <br>
+
       <% end %>
     </ul>
 
