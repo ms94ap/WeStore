@@ -9,11 +9,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    if params[:user_id]
-      @post = Post.find(params[:id])
-    else
-      @post = Post.find(params[:id])
-    end
+    @post = Post.find(params[:id])
   end
 
   def new
