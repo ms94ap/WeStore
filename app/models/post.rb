@@ -9,6 +9,10 @@ class Post < ApplicationRecord
 
   scope :most_recent, ->{ order(created_at: :desc) }
 
+  # def self.most_recent
+  #   order(created_at: :desc)
+  # end
+
   def product_attributes=(pro_attributes)
   
     product = Product.create(name: pro_attributes["name"], 

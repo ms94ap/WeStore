@@ -7,7 +7,7 @@ class User < ApplicationRecord
    has_many :posts
    has_many :products, through: :posts
 
-  enum :role => [:user, :admin]
+  # enum :role => [:user, :admin]
 
   devise :omniauthable, :omniauth_providers => [:facebook]
 
