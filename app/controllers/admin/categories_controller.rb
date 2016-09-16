@@ -15,9 +15,13 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
-   @category = Category.create(category_params)
+
+   @category = Category.new(category_params)
    if @category.save
      redirect_to admin_category_path(@category), notice: "#{@category.name} category created"
+   else
+
+     render 'admin/categories/new', alert: " Please fill in all fields"
    end
  end
 
@@ -37,7 +41,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   private
-  
+
   def check_admin
    if !current_user.admin
      redirect_to root, alert: "Admin rights required!!!"

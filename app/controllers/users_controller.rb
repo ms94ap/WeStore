@@ -16,7 +16,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-  end
+    if @user.save
+      redirect_to user_path(@user)
+    else
+      render 'users/edit', alert: "Missing somehting?"
+   end
+ end
 
   def create
     @user = User.new(user_params)
