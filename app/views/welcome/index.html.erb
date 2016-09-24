@@ -16,7 +16,9 @@
       <%= f.user.country%><br>
       <%= f.user.name%><br>
       
-
+      <% if current_user && current_user.admin %>
+      <%= link_to "Delete Post", user_post_path(f.user, f), :method => :delete, :confirm => "Are you sure?" %>
+      <% end %>
       </li>
       <br>
 

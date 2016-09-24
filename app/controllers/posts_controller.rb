@@ -10,6 +10,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    # respond_to do |format|
+    #   format.html { render :show }
+    #   format.json { render json: @post.to_json(only: [:title, :description, :user_id, :id],
+    #                           include: [user: { only: [:name, :country, :email]}]) }
+    # end
   end
 
   def new
@@ -53,7 +58,11 @@ class PostsController < ApplicationController
   def destroy    
    @post = Post.find(params[:id])
    @post.destroy
-   redirect_to user_path(current_user)
+     if current_user.admin?
+      redirect_to root_path
+    else
+     redirect_to user_path(current_user)
+    end
   end
 
   private
