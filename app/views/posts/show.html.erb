@@ -3,32 +3,38 @@
 
 
 <h2> Your post details:</h2>
+  <div class="userName"> <%= @post.user.name %> </div>
+    <% if next_post = @post.user.posts.detect {|p| p.id > @post.id} %>
+  <a href="#" class="js-next" data-id="<%=next_post.id%>" data-user-id="<%=@post.user.id%>">Next Post</a>
+  <% end %>
 
-<h1><strong><div class="postTitle"><%= @post.title %> </div></strong></h1>
+<div>
+
 
 <h2>Your Product:</h2>
 
-<div class="userName"> <%= @post.user.name %> </div>
-<a href="#" class="js-next" data-id="<%=@post.id%>">Next...</a>
 
-<h1 class="postTitle"> Title: <%= @post.title %> </h1>
-<p class="postBody"> Description: <%= @post.description %> </p>
-<p class="productName">Product Name: <%= @post.product.name %> </p>
-<p class="productPrice"> Product Price: <%=@post.product.price%> </p>
-<p class="productMinimumQuantity"> Minimum Quantity: <%= @post.product.minimum_quantity%> </p>
+  <div> <h3> Title:</h3> <p class="postTitle">  <%= @post.title %> </p></div><br>
+  <div> <h3> Description:</h3> <p class="postBody"> <%= @post.description %> </p></div><br>
+  <div> <h3> Product Name:</h3> <p class="productName"><%= @post.product.name %> </p></div><br>
+  <div> <h3> Product Price:</h3> <p class="productPrice"><%=@post.product.price%> </p></div><br>
+  <div> <h3> Minimum Quantity:</h3> <p class="productMinimumQuantity"> <%= @post.product.minimum_quantity%> </p></div><br>
 
+</div>
   <script type="text/javascript" charset="utf-8">
 
 $(function () {
-  $(".js-next").on("click", function() {
+  $(".js-next").on("click", function(e) {
+    e.preventDefault();
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-    $.get("/posts/" + nextId + "/post_data", function(data) {
-      $(".userName").text(data["user"]["name"]);
+    var userId = parseInt($(".js-next").attr("data-user-id"));
+    $.get("/users/" + userId + "/posts/" + nextId + ".json", function(data) {
+      // $(".userName").text(data["user"]["name"]);
       $(".postTitle").text(data["title"]);
       $(".postBody").text(data["description"]);
-      $(".productName").text(data["product name"]);
+      $(".productName").text(data["product"]["name"]);
       $(".productPrice").text(data["product price"]);
-      $(".productMinimumQuantity").text(data["minimum quantity"])
+      $(".productMinimumQuantity").text(data["product"]["minimum quantity"])
       // re-set the id to current on the link
       $(".js-next").attr("data-id", data["id"]);
     });
@@ -37,7 +43,7 @@ $(function () {
 </script>
 
   <% if current_user == @post.user %>
-  <%=link_to "Edit post & product", new_user_post_path(@post.user)%>
+  <%=link_to "Edit post & product", edit_user_post_path(@post.user)%>
   
   
   
