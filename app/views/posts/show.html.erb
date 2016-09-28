@@ -8,19 +8,19 @@
   <a href="#" class="js-next" data-id="<%=next_post.id%>" data-user-id="<%=@post.user.id%>">Next Post</a>
   <% end %>
 
-<div>
+  <div>
 
 
-<h2>Your Product:</h2>
+    <h2>Your Product:</h2>
 
 
-  <div> <h3> Title:</h3> <p class="postTitle">  <%= @post.title %> </p></div><br>
-  <div> <h3> Description:</h3> <p class="postBody"> <%= @post.description %> </p></div><br>
-  <div> <h3> Product Name:</h3> <p class="productName"><%= @post.product.name %> </p></div><br>
-  <div> <h3> Product Price:</h3> <p class="productPrice"><%=@post.product.price%> </p></div><br>
-  <div> <h3> Minimum Quantity:</h3> <p class="productMinimumQuantity"> <%= @post.product.minimum_quantity%> </p></div><br>
+      <div> <h3> Title:</h3> <p class="postTitle">  <%= @post.title %> </p></div><br>
+      <div> <h3> Description:</h3> <p class="postBody"> <%= @post.description %> </p></div><br>
+      <div> <h3> Product Name:</h3> <p class="productName"><%= @post.product.name %> </p></div><br>
+      <div> <h3> Product Price:</h3> <p class="productPrice"><%=@post.product.price%> </p></div><br>
+      <div> <h3> Minimum Quantity:</h3> <p class="productMinimumQuantity"> <%= @post.product.minimum_quantity%> </p></div><br>
 
-</div>
+  </div>
   <script type="text/javascript" charset="utf-8">
 
 $(function () {
@@ -29,12 +29,12 @@ $(function () {
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     var userId = parseInt($(".js-next").attr("data-user-id"));
     $.get("/users/" + userId + "/posts/" + nextId + ".json", function(data) {
-      // $(".userName").text(data["user"]["name"]);
+      $(".userName").text(data["user"]["name"]);
       $(".postTitle").text(data["title"]);
       $(".postBody").text(data["description"]);
       $(".productName").text(data["product"]["name"]);
-      $(".productPrice").text(data["product price"]);
-      $(".productMinimumQuantity").text(data["product"]["minimum quantity"])
+      $(".productPrice").text(data["product"]["price"]);
+      $(".productMinimumQuantity").text(data["product"]["minimum_quantity"])
       // re-set the id to current on the link
       $(".js-next").attr("data-id", data["id"]);
     });

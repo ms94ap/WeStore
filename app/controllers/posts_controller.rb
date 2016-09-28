@@ -3,13 +3,24 @@ class PostsController < ApplicationController
   def index
     if params[:user_id]
       @posts = User.find(params[:user_id]).posts
+      # respond_to do |format|
+      #   format.html { render :show }
+      #   format.json { render json: @post }
+      # end
+
     else
       @posts = Post.all
+      # respond_to do |format|
+      #   format.html { render :show }
+      #   format.json { render json: @post }
+      # end
     end
   end
 
   def show
     @post = Post.find(params[:id])
+    # @comments = @post.comments
+    # @comment = @post.comments.build
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @post }
