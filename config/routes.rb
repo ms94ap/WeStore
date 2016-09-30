@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     resources :posts 
   end
 
+  resources :posts do
+  	resources :comments
+  end
+
   namespace :admin do
     resources :categories
   end
