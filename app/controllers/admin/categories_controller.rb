@@ -16,13 +16,9 @@ class Admin::CategoriesController < ApplicationController
 
   def create
 
-   @category = Category.new(category_params)
-   if @category.save
-     redirect_to admin_category_path(@category), notice: "#{@category.name} category created"
-   else
-
-     render 'admin/categories/new', alert: " Please fill in all fields"
-   end
+   @category = Category.create(category_params)
+   
+   render json: @category, status: 201
  end
 
   def edit

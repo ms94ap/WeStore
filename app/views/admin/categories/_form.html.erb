@@ -15,10 +15,39 @@
 <% end %>
 
 <%= form_for [:admin, @category] do |f| %>
-<p>
+  <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
-</p>
-
-<%= f.submit "Save" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>
+
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+
+    function Category (name, products) {
+      this.name = name;
+      this.products = products; 
+      this.successMessage = function() {
+        return "Category " + this.name + " succesfully created."
+      }
+    }
+    $('form').submit(function(event) {
+      
+      event.preventDefault();
+ 
+      var values = $(this).serialize();
+ 
+      var posting = $.post('/admin/categories', values);
+ 
+      posting.done(function(response) {
+        var newCategory = new Category(response["name"], response["products"]);
+        $(".resultMessage").text(newCategory.successMessage());
+       });
+    });
+  });
+</script>
+

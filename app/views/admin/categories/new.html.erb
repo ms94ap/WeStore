@@ -1,3 +1,10 @@
 <p>Create new category</p>
 <%= render "form"%>
+
+<div id="categoryResult">
+	<div class="resultMessage"></div>
+  <h2 id="categoryName"></h2>
+</div>
+
 <%= link_to "Sign out", destroy_user_session_path, method: 'delete' %>
+
