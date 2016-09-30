@@ -26,7 +26,7 @@
 $(function () {
   $(".js-next").on("click", function(e) {
     e.preventDefault();
-    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    var nextId = parseInt($(".js-next").attr("data-id"));
     var userId = parseInt($(".js-next").attr("data-user-id"));
     $.get("/users/" + userId + "/posts/" + nextId + ".json", function(data) {
       $(".userName").text(data["user"]["name"]);
@@ -45,6 +45,7 @@ $(function () {
   <% if current_user == @post.user %>
   <%=link_to "Edit post & product", edit_user_post_path(@post.user)%>
   
+
   
   
  

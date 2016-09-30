@@ -5,7 +5,8 @@
     <% @posts.each do |post| %>
 
     <div id="post-<%= post.id %>"><%= link_to post.title, user_post_path(post.user, post)%></div>
-    <button class="js-more" data-id="<%= post.id %>">More Info</button>
+    <button class="js-more" data-id="<%= post.id %>" data-user-id="<%=post.user.id%>">See more</button>
+    <p class="postBody" id="<%= post.id %>"><%= truncate (post.description) %></p>
     <%= link_to 'Delete Post', {controller: :posts, action: "destroy", id: post.id}, :method => :delete, :confirm => "Are you sure?" %> <br>
     <% end %>
   </li>
@@ -18,9 +19,11 @@
 $(function() {
   $(".js-more").on("click", function() {
     var id = $(this).data("id");
- $.get("/posts/" + id + "/posts", function(data){
-  $(".productName").text(data["product"]["name"]);
-      $("#body-" + id).text(data);
+    var userId = parseInt($(".js-next").attr("data-user-id"));
+
+   $.get("/users/" + userId + "/posts/" + id + ".json", function(data){
+    $("#" + id + ".postBody").text(data["description"]);
+    
     });
   });
 });

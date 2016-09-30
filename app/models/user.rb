@@ -7,7 +7,7 @@ class User < ApplicationRecord
    has_many :posts
    has_many :products, through: :posts
 
-   validates :email, :password, presence: true
+   validates :email, presence: true
 
   # enum :role => [:user, :admin]
 
