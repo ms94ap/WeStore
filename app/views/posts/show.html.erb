@@ -28,14 +28,23 @@ $(function () {
     e.preventDefault();
     var nextId = parseInt($(".js-next").attr("data-id"));
     var userId = parseInt($(".js-next").attr("data-user-id"));
-    $.get("/users/" + userId + "/posts/" + nextId + ".json", function(data) {
-      $(".userName").text(data["user"]["name"]);
-      $(".postTitle").text(data["title"]);
-      $(".postBody").text(data["description"]);
-      $(".productName").text(data["product"]["name"]);
-      $(".productPrice").text(data["product"]["price"]);
-      $(".productMinimumQuantity").text(data["product"]["minimum_quantity"])
+      //  change routes to show all posts
+    $.get("/users/" + userId + "/posts.json", function(data) {
+      // find next post
+      var nextPost = data.find(function(post) {
+        return post.id == nextId;
+      });
+      // 1. Update post information on page
+      $(".userName").text(nextPost["user"]["name"]);
+      $(".postTitle").text(nextPost["title"]);
+      $(".postBody").text(nextPost["description"]);
+      $(".productName").text(nextPost["product"]["name"]);
+      $(".productPrice").text(nextPost["product"]["price"]);
+      $(".productMinimumQuantity").text(nextPost["product"]["minimum_quantity"])
+      
       // re-set the id to current on the link
+      // 2. add next to each post to go
+      
       $(".js-next").attr("data-id", data["id"]);
     });
   });

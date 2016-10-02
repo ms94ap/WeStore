@@ -3,17 +3,17 @@ class PostsController < ApplicationController
   def index
     if params[:user_id]
       @posts = User.find(params[:user_id]).posts
-      # respond_to do |format|
-      #   format.html { render :show }
-      #   format.json { render json: @post }
-      # end
+      respond_to do |format|
+        format.html { render :index }
+        format.json { render json: @posts }
+      end
 
     else
       @posts = Post.all
-      # respond_to do |format|
-      #   format.html { render :show }
-      #   format.json { render json: @post }
-      # end
+      respond_to do |format|
+        format.html { render :index }
+        format.json { render json: @posts }
+      end
     end
   end
 
