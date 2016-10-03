@@ -34,7 +34,7 @@ $(function () {
       var nextPost = data.find(function(post) {
         return post.id == nextId;
       });
-      // 1. Update post information on page
+      //  Update post information on page
       $(".userName").text(nextPost["user"]["name"]);
       $(".postTitle").text(nextPost["title"]);
       $(".postBody").text(nextPost["description"]);
@@ -42,10 +42,18 @@ $(function () {
       $(".productPrice").text(nextPost["product"]["price"]);
       $(".productMinimumQuantity").text(nextPost["product"]["minimum_quantity"])
       
-      // re-set the id to current on the link
-      // 2. add next to each post to go
       
-      $(".js-next").attr("data-id", data["id"]);
+      // add next to each post to go
+      var addNext = data.find(function(post) {
+        return post.id > nextId;
+      });
+      
+      if (addNext){
+        $(".js-next").attr("data-id", addNext.id);
+      } else {
+        $(".js-next").hide();
+      }
+      
     });
   });
 });
