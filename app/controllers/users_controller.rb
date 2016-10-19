@@ -4,40 +4,52 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+     render json: @user
+  
   end
 
   def show
     @user = User.find(params[:id])
-    respond_to do |format|
-      format.html {render :show}
-      format.json {render json: @user}
-    end
+    # respond_to do |format|
+    #   format.html {render :show}
+    #   format.json {render json: @user}
+    # end
+      render json: @user
+   
   end
 
   def index
     @users = User.all
+    render json: @user
+    
   end
 
   def edit
     @user = User.find(params[:id])
+    render json: @user
+    
  end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to user_path(@user)
+      # redirect_to user_path(@user)
+      render json: @user
     else
 
-      render :new
+      # render :new
+      render json: (errors: @user.errors.full_messages), status: :uprocessable_entity
     end
   end
 
   def update
     @user.update(user_params)
     if @user.save
-      redirect_to user_path(@user)
+      # redirect_to user_path(@user)
+      render json: @user
     else
-      render :edit
+      # render :edit
+      render json: (errors: @user.errors.full_messages), status: :uprocessable_entity
     end
   end
 
