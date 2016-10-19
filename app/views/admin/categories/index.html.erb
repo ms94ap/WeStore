@@ -1,13 +1,26 @@
-<ul>
+<ul class="categories-list">
 	
 <% @categories.each do |c| %>
- <li>
+ <li type="text" >
 	
 	<%=link_to c.name, admin_category_path(c) %> <%=link_to "Delete", admin_category_path(c), :method => :delete, data: {:confirm => "Are you sure?"} %>
  </li> 
 <% end %>
 </ul>
 
-<%= link_to "create new category", new_admin_category_path%>
+<%= render "form" %>
+<%= link_to("create new category", new_admin_category_path, :class => 'show-form') %>
 <%= link_to "Sign out", destroy_user_session_path, method: 'delete' %>
 <%= link_to "Home", root_path %>
+
+<script type="text/javascript" charset="utf-8">
+
+$(function(){
+	$('form').hide();
+	$(".show-form").on("click", function(e){
+		e.preventDefault();
+		$('form').show();
+	})
+})
+
+</script>

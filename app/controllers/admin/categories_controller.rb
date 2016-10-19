@@ -3,7 +3,8 @@ class Admin::CategoriesController < ApplicationController
   before_action :check_admin
 
   def index
-   @categories = Category.all
+    @categories = Category.all
+    @category = Category.new
   end
 
   def show

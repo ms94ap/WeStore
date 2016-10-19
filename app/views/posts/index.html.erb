@@ -1,32 +1,28 @@
 <h2>Your Posts</h2>
 
+<ul class="posts-list" data-user-id=<%=current_user.id %>>
 
-  <li>
-    <% @posts.each do |post| %>
+</ul>
 
-    <div id="post-<%= post.id %>"><%= link_to post.title, user_post_path(post.user, post)%></div>
-    <button class="js-more" data-id="<%= post.id %>" data-user-id="<%=post.user.id%>">See more</button>
-    <p class="postBody" id="<%= post.id %>"><%= truncate (post.description) %></p>
-    <%= link_to 'Delete Post', {controller: :posts, action: "destroy", id: post.id}, :method => :delete, :confirm => "Are you sure?" %> <br>
-    <% end %>
-  </li>
+
    
 
 
 
 <script type="text/javascript" charset="utf-8">
+$(document).ready(function() {
 
-$(function() {
-  $(".js-more").on("click", function() {
-    var id = $(this).data("id");
-    var userId = parseInt($(".js-next").attr("data-user-id"));
-
-   $.get("/users/" + userId + "/posts/" + id + ".json", function(data){
-    $("#" + id + ".postBody").text(data["description"]);
-    
+  $.get("/users/" + $('ul.posts-list').data('user-id') + "/posts"  + ".json", function(data) {
+    // console.log('data', data)
+    for (index in data){
+      const post = data[index];
+      // console.log('post', post)
+      $('ul.posts-list').append(
+        $('<li>').append(
+          $('<a>').attr('href', '/users/'+ post.user_id + '/posts/' + post.id).text(post.title)));
+          }
+      })
     });
-  });
-});
 </script>
 
 

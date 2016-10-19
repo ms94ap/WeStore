@@ -28,9 +28,10 @@
 <script type="text/javascript" charset="utf-8">
   $(function () {
 
-    function Category (name, products) {
+    function Category (name, id) {
       this.name = name;
-      this.products = products; 
+      this.id = id;
+      // this.products = products; 
       this.successMessage = function() {
         return "Category " + this.name + " succesfully created."
       }
@@ -44,10 +45,24 @@
       var posting = $.post('/admin/categories', values);
  
       posting.done(function(response) {
-        var newCategory = new Category(response["name"], response["products"]);
+        var newCategory = new Category(response["name"], response["id"]);
+          $('ul.categories-list').append(
+            $('<li>').append(
+              $('<a>').attr('href', '/admin/' + '/categories/' + newCategory.id).text(newCategory.name)     
+            )
+          );
         $(".resultMessage").text(newCategory.successMessage());
-       });
+      });
+
+      posting.fail(function(responce){
+        alert("please add something from Mykonos");
+      });
+      $("#category_name").val("")
+      return false;
+
     });
   });
+
+
 </script>
 

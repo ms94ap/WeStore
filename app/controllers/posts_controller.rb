@@ -19,8 +19,6 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    # @comments = @post.comments
-    # @comment = Comment.new
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @post }
@@ -59,7 +57,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to user_post_path(@post.user, @post)#add user to redirect to the path
+      redirect_to user_post_path(@post.user, @post)
     else
       render 'posts/new', alert: " Please fill in all fields"
     end
