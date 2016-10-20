@@ -1,6 +1,6 @@
 (function() {
 
 	angular
-		module('app', ['ui.router', 'templates',)
+		.module('app', ['ui.router', 'templates',)
 
 }());
