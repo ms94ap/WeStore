@@ -10,7 +10,7 @@
 		activate();
 
 		function activate() {
-			showPosts()
+			showPosts();
 		}
  		
 		function showPosts() {

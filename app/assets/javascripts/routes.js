@@ -4,7 +4,7 @@
 		.config(function($stateProvider, $urlRouterProvider){
 			$stateProvider
 				.state("welcome", {
-					url:'/welcome',
+					url:'/',
 					templateUrl: 'welcome/welcome.html',
 					controller: 'WelcomeController as vm'
 				})
@@ -14,6 +14,6 @@
 				// 	controller: 'SingupController as vm'
 				// })
 
-			$urlRouterProvider.otherwise('welcome');
+			$urlRouterProvider.otherwise('/');
 		})
 }());

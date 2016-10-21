@@ -1,13 +1,13 @@
 (function() {
-
+'use strict'
 	function PostFactory($http) {
 		return {
 			showPosts: showPosts
 		}
 
 		function showPosts() {
-			console.log("hello!")
-			return $http.get('/posts', {'Content-Type': 'application/json'})
+			
+			return $http.get('/')
 				.then(handleResponse)
 				.catch(handleError);
 
