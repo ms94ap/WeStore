@@ -6,6 +6,7 @@ gem 'devise'
 gem 'pundit'
 gem 'pry'
 gem 'responders'
+gem 'angularjs-rails'
 gem 'bower-rails'
 gem 'angular-rails-templates'
 

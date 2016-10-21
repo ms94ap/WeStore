@@ -7,15 +7,14 @@ class PostsController < ApplicationController
       #   format.html { render :index }
       #   format.json { render json: @posts }
       render json: @posts
-      end
+      
 
     else
-      @posts = Post.all
+      @posts = Post.most_recent
       # respond_to do |format|
       #   format.html { render :index }
       #   format.json { render json: @posts }
       render json: @posts
-      end
     end
   end
 

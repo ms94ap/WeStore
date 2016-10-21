@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     else
 
       # render :new
-      render json: (errors: @user.errors.full_messages), status: :uprocessable_entity
+      render json: {errors: @user.errors.full_messages, status: :uprocessable_entity}
     end
   end
 
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
       render json: @user
     else
       # render :edit
-      render json: (errors: @user.errors.full_messages), status: :uprocessable_entity
+      render json: {errors: @user.errors.full_messages, status: :uprocessable_entity}
     end
   end
 
