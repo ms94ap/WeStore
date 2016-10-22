@@ -1,1 +1,30 @@
-user.html
+<h3>Edit your account</h3>
+
+  <form ng-submit="ctrl.editUser()">
+
+    <div class="field">
+    	<input ng-model="ctrl.user.email" type="email" name="email" placeholder="Email:"></input>
+    </div>
+
+    <div class="field">
+    	<input ng-model="ctrl.user.name" type="text" name="name" placeholder="Name:"></input>      
+    </div>
+
+    <div class="field">
+      <input ng-model="ctrl.user.password" type="password" name="password" placeholder="Password:"></input>
+    </div>
+
+    <div class="field">
+      <input ng-model="ctrl.user.password_confirmation" type="password" name="password_confirmation" placeholder="Confirm Password:"></input>
+    </div>
+
+    <div class="field">
+    
+      <input ng-model="ctrl.user.current_password" type="password" name="curent_password"  placeholder="current_password" required></input>
+    </div>
+
+    <div class="field">
+      <input type="submit" value="Update Profile">
+    </div>
+    
+  </form>

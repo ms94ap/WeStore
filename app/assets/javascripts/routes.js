@@ -13,6 +13,7 @@
 					templateUrl: 'user/user.html',
 					controller: 'UserController as vm'
 				})
+				.state('users/:id/edit')
 
 			$urlRouterProvider.otherwise('welcome');
 		})
