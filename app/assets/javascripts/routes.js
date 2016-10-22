@@ -4,16 +4,16 @@
 		.config(function($stateProvider, $urlRouterProvider){
 			$stateProvider
 				.state("welcome", {
-					url:'/',
+					url:'/welcome',
 					templateUrl: 'welcome/welcome.html',
 					controller: 'WelcomeController as vm'
 				})
-				// .state('home.signup', {
-				// 	url: '/singup',
-				// 	templateUrl: 'user/singup.html',
-				// 	controller: 'SingupController as vm'
-				// })
+				.state('users/:id', {
+					url: '/users/:id',
+					templateUrl: 'user/user.html',
+					controller: 'UserController as vm'
+				})
 
-			$urlRouterProvider.otherwise('/');
+			$urlRouterProvider.otherwise('welcome');
 		})
 }());
