@@ -7,7 +7,7 @@
 
 		function showPosts() {
 			
-			return $http.get('/')
+			return $http.get('/posts')
 				.then(handleResponse)
 				.catch(handleError);
 

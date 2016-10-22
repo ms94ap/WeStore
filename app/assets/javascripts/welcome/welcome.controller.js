@@ -1,7 +1,8 @@
 (function() {
 	'use strict'
-	function WelcomeController(PostFactory) {
+	function WelcomeController($scope, PostFactory, $filter) {
 		var vm = this;
+		vm.search= '';
 
 
 		vm.showPosts = showPosts;
@@ -20,6 +21,13 @@
 
 		function setPosts(data) {
 			return vm.posts = data;
+		}
+
+		vm.filteredPosts = $filter('filter')(vm.posts, vm.search);
+		
+		vm.refilter = function(){
+	      vm.filteredPosts = $filter('filter')(vm.posts, vm.search);
+		
 		}
 
 	}

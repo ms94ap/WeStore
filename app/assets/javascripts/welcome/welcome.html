@@ -1,11 +1,20 @@
 <h1>Welcome to WeStore</h1>
 
-<div >tessstingsfsf</div>
+
+<div class='search-posts'>Search for posts
+  <input type="text" ng-model="vm.search", ng-change='vm.refilter()'>
 
 
 <ul>
-  <li ng-repeat="post in vm.posts track by post.id">
-    Name: {{post.title}}<br>
-    Description:  {{ post.desription }}
+  <li ng-repeat="post in vm.posts track by post.id"><br>
+    {{user.name}}<br>
+    Title: {{post.title}}<br>
+    Description:  {{ post.description }}<br>
+    Product Name: {{post.product}}<br>
+    Minimum quantity: {{product.minimum-quantity}}
+    Price: {{product.price}}
+
+
   </li>
 </ul>
+</div>
