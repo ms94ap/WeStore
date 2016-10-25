@@ -1,6 +1,6 @@
-(function) () {
+(function() {
 	'use strict'
-	function UserController() {
+	function UserController(UserFactory, $state) {
 
 		var vm = this;
 		vm.user = user;
@@ -17,10 +17,11 @@
 		}
 
 		function setUser(){
-			return vm.user.data;
+			return vm.user = data;
 		}		
 
-		function editUser
+		function updateUser(user){
+		   UserFactory.editUser(vm.user)
 	}
 
 

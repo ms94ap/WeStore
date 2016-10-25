@@ -1,8 +1,8 @@
 (function(){
 	function UserFactory($http) {
 		return {
-			getUser: getUser;
-			editUser: editUser;
+			getUser: getUser,
+			editUser: editUser
 		}
 
 		function getUser() {
@@ -12,9 +12,10 @@
 
 		}
 
-		function editUser(){
-			return $http.post('users/:id/edit')
-			//edit needs more editing
+		function editUser(user){
+			return $http.post('users/:id')
+					.then(handleResponse)
+					.catch(handleError);
 		}
 
 		function handleResponse(response) {
@@ -24,7 +25,7 @@
 		}
 
 		function handleError(error) {
-			console.log(error)
+			console.log(error);
 		}
 	}
 

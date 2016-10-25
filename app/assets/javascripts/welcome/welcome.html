@@ -7,12 +7,12 @@
 
 <ul>
   <li ng-repeat="post in vm.posts track by post.id"><br>
-    {{user.name}}<br>
+    <br>
     Title: {{post.title}}<br>
     Description:  {{ post.description }}<br>
-    Product Name: {{post.product}}<br>
-    Minimum quantity: {{product.minimum-quantity}}
-    Price: {{product.price}}
+    Product Name: {{post.product.name}}<br>
+    Minimum quantity: {{product.minimum-quantity}}<br>
+    Price: {{product.price}}<br>
 
 
   </li>

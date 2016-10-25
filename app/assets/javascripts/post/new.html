@@ -1,0 +1,8 @@
+<h1>Create Post</h1>
+<form ng-submit="vm.createPost()">
+    <label for="title">Title:</label>
+    <textarea ng-model="vm.newPost.title"></textarea>
+    <label for="description"> description</label>
+    <textarea ng-model="vm.newPost.description"></textarea>
+    <input type="submit" value="Create Post">
+</form>

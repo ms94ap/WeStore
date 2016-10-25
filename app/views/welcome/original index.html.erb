@@ -1,0 +1,29 @@
+<!-- -<header>
+ -  <div>
+ -    <% if current_user && current_user.admin %>
+ -    <%= link_to "categories", admin_categories_path %>
+ -    <% end %>
+ -    
+ -    <h1>WeStore</h1>
+ -    <h2>Welcome to the Wholesale Food and Beverage E-Store</h2>
+ -
+ -    <h4>Posts</h4>
+ -
+ -    <ul>
+ -      
+ -      <li><% @posts.each do |f|%><br>
+ -      <%= link_to f.title, user_post_path(f.user, f) %> <%= f.last_updated %><br>
+ -      <%= f.user.country%><br>
+ -      <%= f.user.name%><br>
+ -      
+ -      <% if current_user && current_user.admin %>
+ -      <%= link_to "Delete Post", user_post_path(f.user, f), :method => :delete, :confirm => "Are you sure?" %>
+ -      <% end %>
+ -      </li>
+ -      <br>
+ -
+ -      <% end %>
+ -    </ul>
+ -
+ -  </div>
+ -</header> -->

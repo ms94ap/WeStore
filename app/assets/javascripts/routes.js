@@ -8,12 +8,12 @@
 					templateUrl: 'welcome/welcome.html',
 					controller: 'WelcomeController as vm'
 				})
-				.state('users/:id', {
+				.state('users.:id', {
 					url: '/users/:id',
 					templateUrl: 'user/user.html',
 					controller: 'UserController as vm'
 				})
-				.state('users/:id/edit')
+				// .state('users/:id/edit')
 
 			$urlRouterProvider.otherwise('welcome');
 		})

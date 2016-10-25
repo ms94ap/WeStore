@@ -1,0 +1,30 @@
+<h3>Edit your account</h3>
+
+  <form ng-submit="vm.editUser()">
+
+    <div class="field">
+    	<input ng-model="vm.user.email" type="email" name="email" placeholder="Email:" required></input>
+    </div>
+
+    <div class="field">
+    	<input ng-model="vm.user.name" type="text" name="name" placeholder="Name:" required></input>      
+    </div>
+
+    <div class="field">
+      <input ng-model="vm.user.password" type="password" name="password" placeholder="Password:" required></input>
+    </div>
+
+    <div class="field">
+      <input ng-model="vm.user.password_confirmation" type="password" name="password_confirmation" placeholder="Confirm Password:" required></input>
+    </div>
+
+    <div class="field">
+    
+      <input ng-model="vm.user.current_password" type="password" name="current_password"  placeholder="current_password" required></input>
+    </div>
+
+    <div class="field">
+      <input type="submit" value="Update Profile">
+    </div>
+
+  </form>
